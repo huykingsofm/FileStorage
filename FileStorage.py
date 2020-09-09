@@ -3,7 +3,7 @@ import re
 import random
 import shutil
 
-from FileUtils import split_path, File
+from .FileUtils import split_path, File
 
 N_SPLITS = 3
 N_BYTES_FOR_IDENTIFYING = 100
