@@ -1,0 +1,3 @@
+[submodule "FileEncryptor"]
+	path = FileEncryptor
+	url = https://github.com/huykingsofm/FileEncryptor
