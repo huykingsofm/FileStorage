@@ -213,5 +213,6 @@ class FileStorage(object):
         self.storage_structure.read(self.__storage_prop_file__)
         directory = self.storage_structure.find_path(last_bytes_of_file)    
         prop_file = os.path.join(directory, NAME_OF_PROPERTY_IN_LEAF)
-        return File.readlines(prop_file)
+        add_path = lambda file_name: os.path.join(directory, file_name)
+        return map(add_path, File.readlines(prop_file))
             
