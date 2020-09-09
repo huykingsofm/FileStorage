@@ -175,8 +175,8 @@ class StorageStructure(object):
         os.remove(prop_file)
 
 class FileStorage(object):
-    def __init__(self, directory):
-        self.storage_structure = StorageStructure(N_SPLITS)
+    def __init__(self, directory, n_splits = N_SPLITS):
+        self.storage_structure = StorageStructure(n_splits)
         self.directory = directory
         if not os.path.isdir(self.directory):
             print("Create dir {}".format(self.directory))
