@@ -178,6 +178,7 @@ class FileStorage(object):
     def __init__(self, directory, n_splits = N_SPLITS):
         self.storage_structure = StorageStructure(n_splits)
         self.directory = directory
+        self.n_splits = n_splits
         if not os.path.isdir(self.directory):
             print("Create dir {}".format(self.directory))
             os.mkdir(self.directory)
@@ -204,7 +205,7 @@ class FileStorage(object):
         self.storage_structure.add_file(path_to_file)
 
         prop_file = os.path.join(directory, NAME_OF_PROPERTY_IN_LEAF)
-        if len(tuple(File.readlines(prop_file))) >= N_SPLITS:
+        if len(tuple(File.readlines(prop_file))) >= self.n_splits:
             self.storage_structure.reconstruct(directory)
         
         self.storage_structure.write(self.__storage_prop_file__)
