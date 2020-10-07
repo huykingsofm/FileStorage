@@ -44,7 +44,8 @@ class File(object):
     def readlines(file_name, mode = "rt", remove_endline = True):
         file = open(file_name, mode)
         for line in file:
-            line = line.strip("\n")
+            if remove_endline:
+                line = line.rstrip("\n")
             if line:
                 yield line
         file.close()

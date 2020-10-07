@@ -213,7 +213,10 @@ class FileStorage(object):
     def iter(self, last_bytes_of_file):
         self.storage_structure.read(self.__storage_prop_file__)
         directory = self.storage_structure.find_path(last_bytes_of_file)    
+        
         prop_file = os.path.join(directory, NAME_OF_PROPERTY_IN_LEAF)
         add_path = lambda file_name: os.path.join(directory, file_name)
-        return map(add_path, File.readlines(prop_file))
-            
+        
+        for file in map(add_path, File.readlines(prop_file)):
+            if File.get_elements_at_the_end(file, len(last_bytes_of_file)) == last_bytes_of_file:
+                yield file
