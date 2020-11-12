@@ -3,7 +3,9 @@ import re
 import random
 
 MAX_BUFFER = 3 * 1024 * 1024 # 3MB
-FROM_END = 2 # seek() method of io
+FROM_START = 0 # whence arg of seek() method of io
+FROM_CUR = 1   # whence arg of seek() method of io
+FROM_END = 2   # whence arg of seek() method of io
 
 class File(object):
     @staticmethod
